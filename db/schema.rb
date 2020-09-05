@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_080355) do
+ActiveRecord::Schema.define(version: 2020_09_05_083841) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2020_09_05_080355) do
     t.integer "view_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "file"
+    t.string "image"
     t.index ["user_id"], name: "index_videos_on_user_id"
     t.index ["view_count"], name: "index_videos_on_view_count"
   end

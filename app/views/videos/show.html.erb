@@ -1,24 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @video.title %>
+<%= video_tag @video.file.url, controls: true, class: "w-100" if @video.file? %>
+<h4><%= @video.title %>
+</h4>
+投稿者:<%= @video.user.email %>
+<%= simple_format @video.description %>
+View count:<%= @video.view_count.to_i %>
 </p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @video.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @video.user_id %>
-</p>
-
-<p>
-  <strong>View count:</strong>
-  <%= @video.view_count %>
-</p>
-
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+<%= link_to '編集', edit_video_path(@video), class: "btn btn-danger" %> |
+<%= link_to '削除', @video, method: :delete, class: "btn btn-outline-danger" %> |
+<%= link_to '一覧', videos_path, class: "btn btn-danger" %>
