@@ -11,10 +11,14 @@
 
   <body>
     <nav class="navbar">
-      <a href="" class="navbar-brand">
+      <a href="/" class="navbar-brand">
         <%= fa_icon "youtube-play", class: "text-danger mr-1" %>
         MeTube
         </a>
+        <%= form_tag videos_path, method: :get, class: "form-inline" do %>
+          <%= text_field_tag :q, params[:q], class: "form-control mr-2" %>
+          <%= submit_tag "検索", class: "btn btn-danger" %>
+        <% end %>
         <div>
           <% if current_user %>
             <%= link_to "投稿", new_video_path, class: "btn btn-danger"  %>
