@@ -17,6 +17,7 @@
         </a>
         <div>
           <% if current_user %>
+            <%= link_to "投稿", new_video_path, class: "btn btn-danger"  %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger"  %>
           <% else %>
             <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-danger" %>
