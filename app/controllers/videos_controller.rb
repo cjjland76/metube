@@ -7,6 +7,8 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @videos = Video.all
+    @videos = @videos.where("title LIKE ?", "%#{params[:q]}%") if params[:q].present?
+    @videos = @videos.page(params[:page]).per(8)
   end
 
   # GET /videos/1
