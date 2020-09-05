@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   before_action :authenticate_user!, only: [:create, :new, :edit, :destory, :update]
   before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :check_owner, only: [:edit, :update, :destroy]
 
   # GET /videos
   # GET /videos.json
@@ -11,6 +12,7 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    @video.increment!(:view_count)
   end
 
   # GET /videos/new
@@ -72,5 +74,9 @@ class VideosController < ApplicationController
     # Only allow a list of trusted parameters through.
     def video_params
       params.require(:video).permit(:title, :description, :file, :image)
+    end
+
+    def check_owner
+      redirect_to root_path unless @video.user == current_user
     end
 end

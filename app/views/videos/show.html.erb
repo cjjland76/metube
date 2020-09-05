@@ -5,6 +5,10 @@
 <%= simple_format @video.description %>
 View count:<%= @video.view_count.to_i %>
 </p>
+<% if current_user && (@video.user == current_user) %>
 <%= link_to '編集', edit_video_path(@video), class: "btn btn-danger" %> |
-<%= link_to '削除', @video, method: :delete, class: "btn btn-outline-danger" %> |
+<%= link_to '削除', @video, method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger" %> 
 <%= link_to '一覧', videos_path, class: "btn btn-danger" %>
+<% else %>
+<%= link_to '一覧', videos_path, class: "btn btn-danger" %>
+<% end %>
