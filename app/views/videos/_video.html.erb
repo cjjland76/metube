@@ -1,0 +1,15 @@
+<div class="col-3">
+  <div class="card">
+    <div class="card-body">
+      <strong>
+      <%= video.title %>
+      </strong>
+      <p class="small">
+        <%= truncate video.description, length: 30 %>
+      </p>
+      <p class="text-gray small">
+        <%= time_ago_in_works video.created_at %>前、　Views<%= video.view_count.to_i %>
+      </p>
+    </div>
+  </div>
+</div>
