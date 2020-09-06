@@ -12,3 +12,12 @@ View count:<%= @video.view_count.to_i %>
 <% else %>
 <%= link_to '一覧', videos_path, class: "btn btn-danger" %>
 <% end %>
+<br>
+<br>
+<div class="comments">
+  <%= render "videos/comments" %>
+</div>
+
+
+
+ 

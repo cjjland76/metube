@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_083841) do
+ActiveRecord::Schema.define(version: 2020_09_05_133235) do
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "user_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["video_id"], name: "index_comments_on_video_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -38,5 +48,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_083841) do
     t.index ["view_count"], name: "index_videos_on_view_count"
   end
 
+  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "videos"
   add_foreign_key "videos", "users"
 end
