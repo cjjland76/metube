@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.create(comment_params)
     @video = @comment.video
-    @comment.save
+    @comment.save!
   end
   
   def destroy
